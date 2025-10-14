@@ -300,7 +300,7 @@ class SmaartV3 extends InstanceBase {
 	 * @access public
 	 * @since 1.0.0
 	 */
-	resetAvg() {
+	async resetAvg() {
 		const payload = {
 			//sequenceNumber: 10,
 			action: 'set',
@@ -312,7 +312,7 @@ class SmaartV3 extends InstanceBase {
 			],
 		}
 
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	/**
@@ -321,7 +321,7 @@ class SmaartV3 extends InstanceBase {
 	 * @access public
 	 * @since 1.0.0
 	 */
-	selectTab(tabName) {
+	async selectTab(tabName) {
 		const payload = {
 			//sequenceNumber: 11,
 			action: 'set',
@@ -333,7 +333,7 @@ class SmaartV3 extends InstanceBase {
 			],
 		}
 
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	/**
@@ -342,7 +342,7 @@ class SmaartV3 extends InstanceBase {
 	 * @access public
 	 * @since 1.0.0
 	 */
-	startAllMeasurements(tabName) {
+	async startAllMeasurements(tabName) {
 		const payload = {
 			//sequenceNumber: 12,
 			action: 'set',
@@ -353,7 +353,7 @@ class SmaartV3 extends InstanceBase {
 			properties: [{ active: true }],
 		}
 
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	/**
@@ -362,7 +362,7 @@ class SmaartV3 extends InstanceBase {
 	 * @access public
 	 * @since 1.0.0
 	 */
-	generatorState(state) {
+	async generatorState(state) {
 		const payload = {
 			//sequenceNumber: 13,
 			action: 'set',
@@ -370,7 +370,7 @@ class SmaartV3 extends InstanceBase {
 			properties: [{ active: state }],
 		}
 
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	/**
@@ -379,7 +379,7 @@ class SmaartV3 extends InstanceBase {
 	 * @access public
 	 * @since 1.0.0
 	 */
-	setGeneratorLevel(level) {
+	async setGeneratorLevel(level) {
 		const payload = {
 			//sequenceNumber: 14,
 			action: 'set',
@@ -387,7 +387,7 @@ class SmaartV3 extends InstanceBase {
 			properties: [{ gain: level }],
 		}
 
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	/**
@@ -396,7 +396,7 @@ class SmaartV3 extends InstanceBase {
 	 * @access public
 	 * @since 1.0.0
 	 */
-	trackingState(state) {
+	async trackingState(state) {
 		const payload = {
 			//sequenceNumber: 15,
 			action: 'set',
@@ -405,7 +405,7 @@ class SmaartV3 extends InstanceBase {
 			},
 			properties: [{ trackingDelay: state }],
 		}
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	/**
@@ -415,7 +415,7 @@ class SmaartV3 extends InstanceBase {
 	 * @since 2.0.0
 	 */
 
-	captureTrace(traceName) {
+	async captureTrace(traceName) {
 		const payload = {
 			//sequenceNumber: 42,
 			action: 'capture',
@@ -424,7 +424,7 @@ class SmaartV3 extends InstanceBase {
 			},
 		}
 		this.log('debug', `captureTrace: ${JSON.stringify(payload)}`)
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	/**
@@ -435,7 +435,7 @@ class SmaartV3 extends InstanceBase {
 	 * @since 2.0.0
 	 */
 
-	renameTrace(traceName, tracePath) {
+	async renameTrace(traceName, tracePath) {
 		const payload = {
 			//sequenceNumber: 42,
 			action: 'set',
@@ -445,7 +445,7 @@ class SmaartV3 extends InstanceBase {
 			properties: [{ name: traceName }],
 		}
 		this.log('debug', `renameTrace: ${JSON.stringify(payload)}`)
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	/**
@@ -454,14 +454,14 @@ class SmaartV3 extends InstanceBase {
 	 * @access public
 	 * @since 1.0.0
 	 */
-	issueCommand(command) {
+	async issueCommand(command) {
 		const payload = {
 			//sequenceNumber: 16,
 			action: 'issueCommand',
 			properties: [{ keypress: command }],
 		}
 		this.log('debug', `issueCommand: ${JSON.stringify(payload)}`)
-		this.sendData(payload)
+		await this.sendData(payload)
 	}
 
 	updateActions() {

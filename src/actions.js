@@ -4,7 +4,7 @@ export default async function (self) {
 			name: 'Reset Average',
 			options: [],
 			callback: async (_action) => {
-				self.resetAvg()
+				await self.resetAvg()
 			},
 		},
 		selectTabByName: {
@@ -19,7 +19,7 @@ export default async function (self) {
 				},
 			],
 			callback: async (action, context) => {
-				self.selectTab(await context.parseVariablesInString(action.options.tabName))
+				await self.selectTab(await context.parseVariablesInString(action.options.tabName))
 			},
 		},
 		startAllMeasurements: {
@@ -34,21 +34,21 @@ export default async function (self) {
 				},
 			],
 			callback: async (action, context) => {
-				self.startAllMeasurements(await context.parseVariablesInString(action.options.tabName))
+				await self.startAllMeasurements(await context.parseVariablesInString(action.options.tabName))
 			},
 		},
 		startGenerator: {
 			name: 'Start signal generator',
 			options: [],
 			callback: async (_action) => {
-				self.generatorState(true)
+				await self.generatorState(true)
 			},
 		},
 		stopGenerator: {
 			name: 'Stop signal generator',
 			options: [],
 			callback: async (_action) => {
-				self.generatorState(false)
+				await self.generatorState(false)
 			},
 		},
 		setGeneratorLevel: {
@@ -65,21 +65,21 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.setGeneratorLevel(action.options.level)
+				await self.setGeneratorLevel(action.options.level)
 			},
 		},
 		startTrackingAll: {
 			name: 'Start delay tracking for current tab',
 			options: [],
 			callback: async (_action) => {
-				self.trackingState(true)
+				await self.trackingState(true)
 			},
 		},
 		stopTrackingAll: {
 			name: 'Stop delay tracking for current tab',
 			options: [],
 			callback: async (_action) => {
-				self.trackingState(false)
+				await self.trackingState(false)
 			},
 		},
 		zoomX: {
@@ -98,7 +98,7 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand('option + command' + action.options.selectedDirection)
+				await self.issueCommand('option + command' + action.options.selectedDirection)
 			},
 		},
 		zoomY: {
@@ -117,7 +117,7 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand(action.options.selectedDirection)
+				await self.issueCommand(action.options.selectedDirection)
 			},
 		},
 		zoomXY: {
@@ -136,7 +136,7 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand('command' + action.options.selectedDirection)
+				await self.issueCommand('command' + action.options.selectedDirection)
 			},
 		},
 		setZoomPreset: {
@@ -158,7 +158,7 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand('option + ' + action.options.zoomPreset)
+				await self.issueCommand('option + ' + action.options.zoomPreset)
 			},
 		},
 		arrowKeys: {
@@ -179,7 +179,7 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand('cursor ' + action.options.selectedDirection)
+				await self.issueCommand('cursor ' + action.options.selectedDirection)
 			},
 		},
 		cycleZOrder: {
@@ -199,9 +199,9 @@ export default async function (self) {
 			],
 			callback: async (action) => {
 				if (action.options.selectedDirection == 'forward') {
-					self.issueCommand('Z')
+					await self.issueCommand('Z')
 				} else if (action.options.selectedDirection == 'backward') {
-					self.issueCommand('shift + Z')
+					await self.issueCommand('shift + Z')
 				}
 			},
 		},
@@ -209,49 +209,49 @@ export default async function (self) {
 			name: 'Hide Trace',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('H')
+				await self.issueCommand('H')
 			},
 		},
 		hideAllTraces: {
 			name: 'Hide All Traces',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('shift + command + H')
+				await self.issueCommand('shift + command + H')
 			},
 		},
 		togglePeakHold: {
 			name: 'Toggle Peak Hold',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('P')
+				await self.issueCommand('P')
 			},
 		},
 		toggleInputMeters: {
 			name: 'Toggle Input Meters',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('shift + E')
+				await self.issueCommand('shift + E')
 			},
 		},
 		toggleInputMeterOrientation: {
 			name: 'Toggle Input Meter Orientation',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('shift + option + E')
+				await self.issueCommand('shift + option + E')
 			},
 		},
 		toggleSPLHistory: {
 			name: 'Toggle SPL History',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('option + H')
+				await self.issueCommand('option + H')
 			},
 		},
 		toggleMeters: {
 			name: 'Toggle SPL Meters',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('E')
+				await self.issueCommand('E')
 			},
 		},
 		selectViewPreset: {
@@ -280,7 +280,7 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand(action.options.viewPreset)
+				await self.issueCommand(action.options.viewPreset)
 			},
 		},
 		moveFrontTrace: {
@@ -299,21 +299,21 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand('command + cursor ' + action.options.selectedDirection)
+				await self.issueCommand('command + cursor ' + action.options.selectedDirection)
 			},
 		},
 		clearTraceOffset: {
 			name: 'Clear Top Trace Y Offset',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('Y')
+				await self.issueCommand('Y')
 			},
 		},
 		clearAllTraceOffset: {
 			name: 'Clear All Y Offsets',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('command + Y')
+				await self.issueCommand('command + Y')
 			},
 		},
 		toggleBar: {
@@ -333,21 +333,21 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand(action.options.selectedBar)
+				await self.issueCommand(action.options.selectedBar)
 			},
 		},
 		lockCursorToPeak: {
 			name: 'Lock Cursor To Peak',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('command + P')
+				await self.issueCommand('command + P')
 			},
 		},
 		clearLockedCursor: {
 			name: 'Clear Locked Cursor',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('command + X')
+				await self.issueCommand('command + X')
 			},
 		},
 		moveLockedCursor: {
@@ -366,14 +366,14 @@ export default async function (self) {
 				},
 			],
 			callback: async (action) => {
-				self.issueCommand('command + cursor ' + action.options.selectedDirection)
+				await self.issueCommand('command + cursor ' + action.options.selectedDirection)
 			},
 		},
 		cyclePlot: {
 			name: 'Cycle Preferred Plot',
 			options: [],
 			callback: async (_action) => {
-				self.issueCommand('M')
+				await self.issueCommand('M')
 			},
 		},
 		captureTrace: {
@@ -388,7 +388,7 @@ export default async function (self) {
 				},
 			],
 			callback: async (action, context) => {
-				self.captureTrace(await context.parseVariablesInString(action.options.traceName))
+				await self.captureTrace(await context.parseVariablesInString(action.options.traceName))
 			},
 		},
 		renameTrace: {
@@ -400,6 +400,7 @@ export default async function (self) {
 					id: 'traceName',
 					useVariables: { local: true },
 					required: true,
+					tooltip: 'The new name of the trace',
 				},
 				{
 					type: 'textinput',
@@ -407,10 +408,11 @@ export default async function (self) {
 					id: 'tracePath',
 					useVariables: { local: true },
 					required: true,
+					tooltip: 'Full path and filename of the trace to be renamed',
 				},
 			],
 			callback: async (action, context) => {
-				self.renameTrace(
+				await self.renameTrace(
 					await context.parseVariablesInString(action.options.traceName),
 					await context.parseVariablesInString(action.options.tracePath),
 				)
