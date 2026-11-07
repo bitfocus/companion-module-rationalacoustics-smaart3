@@ -1,4 +1,6 @@
 {
+	"$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
+	"type": "connection",
 	"id": "rationalacoustics-smaart3",
 	"name": "rationalacoustics-smaart3",
 	"shortname": "Smaart-V3",
@@ -15,10 +17,10 @@
 	],
 	"legacyIds": [],
 	"runtime": {
-		"type": "node22",
+		"type": "node26",
 		"api": "nodejs-ipc",
 		"apiVersion": "0.0.0",
-		"entrypoint": "../src/index.js"
+		"entrypoint": "../dist/main.js"
 	},
 	"manufacturer": "Rational Acoustics",
 	"products": ["Smaart V8.3 - V8.5", "Smaart Di 2.1 and newer"],
